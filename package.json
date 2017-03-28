@@ -1,0 +1,9 @@
+{
+  "name": "secure-random-value",
+  "version": "0.0.1",
+  "description": "Generates cryptographically secure random values",
+  "main": "build/index.js",
+  "repository": "https://github.com/dudeofawesome/secure-random-value.git",
+  "author": "Louis Orleans <louis@orleans.io>",
+  "license": "MIT"
+}
