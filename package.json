@@ -21,7 +21,6 @@
     "test:unit": "mocha build/test",
     "test:nsp": "nsp check",
     "test:coverage": "nyc -x build/test mocha build/test",
-    "posttest": "nyc report --reporter=json && codecov -f coverage/*.json",
     "prepublish": "yarn test && tsc"
   },
   "pre-commit": [
