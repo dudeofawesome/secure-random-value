@@ -4,6 +4,13 @@
   "description": "Generates cryptographically secure random values",
   "main": "build/index.js",
   "repository": "https://github.com/dudeofawesome/secure-random-value.git",
+  "homepage": "https://github.com/dudeofawesome/secure-random-value",
+  "bugs": {
+    "url": "https://github.com/dudeofawesome/secure-random-value/issues"
+  },
+  "keywords": [
+    "random", "string", "number", "crypto", "secure"
+  ],
   "author": "Louis Orleans <louis@orleans.io>",
   "license": "MIT",
   "scripts": {
@@ -14,6 +21,7 @@
     "test:unit": "mocha build/test",
     "test:nsp": "nsp check",
     "test:coverage": "nyc -x build/test mocha build/test",
+    "posttest": "nyc report --reporter=json && codecov -f coverage/*.json",
     "prepublish": "yarn test && tsc"
   },
   "pre-commit": [

@@ -1,4 +1,4 @@
-# secure-random-value [![Travis CI Status](https://travis-ci.org/dudeofawesome/secure-random-value.svg?branch=master)](https://travis-ci.org/dudeofawesome/secure-random-value) [![NPM version](https://badge.fury.io/js/secure-random-value.svg)](https://www.npmjs.com/package/secure-random-value)
+# secure-random-value [![Travis CI Status](https://travis-ci.org/dudeofawesome/secure-random-value.svg?branch=master)](https://travis-ci.org/dudeofawesome/secure-random-value) [![NPM version](https://badge.fury.io/js/secure-random-value.svg)](https://www.npmjs.com/package/secure-random-value) [![codecov](https://codecov.io/gh/dudeofawesome/secure-random-value/branch/master/graph/badge.svg)](https://codecov.io/gh/dudeofawesome/secure-random-value)
 
 Generates cryptographically secure random values
 
