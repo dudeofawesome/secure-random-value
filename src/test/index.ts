@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { RandomNumber, RandomString } from '../';
+import { RandomNumber, RandomString, get_random_number } from '../';
 
 const MochaAsync = (fn) => {
   return (done) => {
@@ -16,6 +16,21 @@ const MochaAsync = (fn) => {
 };
 
 describe(`RandomNumber`, () => {
+  it(`should get a number from a buffer`,
+    MochaAsync(async () => {
+      const buffers = [
+        Buffer.from([0x00, 0x00]),
+        Buffer.from([0x80, 0x80]),
+        Buffer.from([0xFF, 0xFF]),
+        Buffer.from([0x00, 0x00, 0x80, 0x80])
+      ];
+      expect(get_random_number(buffers[0])).to.be.below(0.1);
+      expect(get_random_number(buffers[1])).to.be.above(0.49).and.below(0.51);
+      expect(get_random_number(buffers[2])).to.be.above(0.9);
+      expect(get_random_number(buffers[3], 1)).to.be.above(0.49).and.below(0.51);
+    })
+  );
+
   it(`should generate random numbers between 0 and 100`,
     MochaAsync(async () => {
       for (let i = 0; i < 1000; i++) {
@@ -79,6 +94,24 @@ describe(`RandomString`, () => {
         const result = await RandomString(14);
         expect(result.length).to.equal(14);
         expect(result).to.match(/^[a-zA-Z0-9]{14,14}$/);
+      }
+    })
+  );
+
+  it(`should generate random emoji strings with length 32`,
+    MochaAsync(async () => {
+      for (let i = 0; i < 1000; i++) {
+        const result = await RandomString(32, 'emoji');
+        expect(result.length).to.equal(32);
+      }
+    })
+  );
+
+  it(`should generate random emoji strings with length 14`,
+    MochaAsync(async () => {
+      for (let i = 0; i < 1000; i++) {
+        const result = await RandomString(14, 'emoji');
+        expect(result.length).to.equal(14);
       }
     })
   );

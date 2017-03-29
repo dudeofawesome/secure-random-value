@@ -54,14 +54,14 @@ export function RandomString (
         ]);
       }
 
-      resolve(result);
+      return resolve(result);
     });
   });
 }
 
 const Uint32MAX = 65536;
 const LITTLE_ENDIAN: boolean = Endianness() === 'LE';
-function get_random_number (buffer: Buffer, position: number = 0): number {
+export function get_random_number (buffer: Buffer, position: number = 0): number {
   if (LITTLE_ENDIAN) {
     return buffer.readUInt16LE(position) / Uint32MAX;
   } else {
