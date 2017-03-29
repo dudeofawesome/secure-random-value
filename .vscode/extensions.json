@@ -1,0 +1,9 @@
+// Suggested extensions
+{
+	"recommendations": [
+		"Compulim.indent4to2",
+		"EditorConfig.EditorConfig",
+		"eg2.tslint",
+    "jdforsythe.add-new-line-to-files",
+	]
+}

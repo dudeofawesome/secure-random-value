@@ -1,0 +1,47 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch",
+      "type": "node2",
+      "request": "launch",
+      // "program": "${workspaceRoot}/build/server/server.js",
+      "program": "${workspaceRoot}/node_modules/.bin/nf",
+      "stopOnEntry": false,
+      "args": ["start", "web"],
+      "cwd": "${workspaceRoot}",
+      "preLaunchTask": "build",
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "development",
+        "build": "false"
+      },
+      "sourceMaps": true,
+      "outDir": "${workspaceRoot}/build"
+    },
+    {
+      "name": "Attach",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "address": "localhost",
+      "restart": false,
+      "sourceMaps": true,
+      "outDir": "${workspaceRoot}/build",
+      "localRoot": "${workspaceRoot}",
+      "remoteRoot": null
+    },
+    {
+      "name": "Attach to Process",
+      "type": "node",
+      "request": "attach",
+      "processId": "${command.PickProcess}",
+      "port": 9229,
+      "sourceMaps": true,
+      "outDir": "${workspaceRoot}/build"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+language: node_js
+node_js:
+- 6.9.2
+
+# https://docs.travis-ci.com/user/languages/javascript-with-nodejs#Node.js-v4-(or-io.js-v3)-compiler-requirements
+env:
+  - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+
+# https://docs.travis-ci.com/user/ci-environment/#Virtualization-environments
+# sudo: false
+
+# https://blog.travis-ci.com/2013-12-05-speed-up-your-builds-cache-your-dependencies/
+cache:
+  yarn: true
+  directories:
+    - node_modules
+    - "$HOME/.yarn-cache"
+
+# https://docs.travis-ci.com/user/customizing-the-build#Git-Clone-Depth
+git:
+  depth: 1
+
+# https://docs.travis-ci.com/user/customizing-the-build#Building-Specific-Branches
+branches:
+  only:
+    - master
+    - develop
+    - /^release-.*$/
+    - hotfixes
+    - /^hotfix-.*$/
+    - /^feature-.*$/
+
+script:
+  - yarn test
+

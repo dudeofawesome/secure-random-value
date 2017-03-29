@@ -5,5 +5,30 @@
   "main": "build/index.js",
   "repository": "https://github.com/dudeofawesome/secure-random-value.git",
   "author": "Louis Orleans <louis@orleans.io>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "if [ \"$BUILD\" = \"true\" ] ;then npm run build; fi; if [ \"$DEPLOY\" = \"true\" ] ;then node .; fi",
+    "build": "gulp build",
+    "debug": "node --inspect .",
+    "lint": "tslint -c tslint.json --project tsconfig.json",
+    "pretest": "tsc",
+    "test": "yarn run lint && yarn run test:unit && yarn run test:nsp",
+    "test:unit": "mocha build/test",
+    "test:nsp": "nsp check",
+    "prepublish": "yarn test && tsc"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "devDependencies": {
+    "@types/chai": "^3.4.35",
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^7.0.12",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "nsp": "^2.6.3",
+    "pre-commit": "^1.2.2",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.2"
+  }
 }
