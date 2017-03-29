@@ -37,3 +37,10 @@ src
 typings
 typings/**/*
 
+# Config files
+.editorconfig
+.travis.yml
+.vscode/**/*
+tsconfig.json
+tslint.json
+
