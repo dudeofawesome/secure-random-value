@@ -4,15 +4,15 @@ Generates cryptographically secure random values
 
 ## Using Secure Random Value
 
-1. Install as a dependency
+#### 1. Install as a dependency
   ```shell
   yarn add secure-random-value
   ```
-1. Import package
+#### 2. Import package
   ```TypeScript
   import { RandomString } from 'secure-random-string';
   ```
-1. Get a random value
+#### 3. Get a random value
   ```TypeScript
   let random_string = await RandomString();
   ```
@@ -28,7 +28,7 @@ Generates cryptographically secure random values
 
 #### `RandomString(length?: number, charsets?: string | string[]): Promise<string>`
 - `length: number = 32`: The length of the string to generate
-- `charsets: string | string[] = ['alpha', 'alpha_upper', 'numeric']`: The set of characters to pick from. [There are a few built in character sets](#Builtincharactersets). You can also pass in an array of charactes to pick from: `['a', 'b', 'c', '1', '2', '3']`
+- `charsets: string | string[] = ['alpha', 'alpha_upper', 'numeric']`: The set of characters to pick from. [There are a few built in character sets](#built-in-character-sets). You can also pass in an array of charactes to pick from: `['a', 'b', 'c', '1', '2', '3']`
 - Returns a `Promise<string>` object.
 
 ### Properties
