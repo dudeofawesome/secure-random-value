@@ -1,8 +1,6 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-  "editor.rulers": [
-    120
-  ],
+  "editor.rulers": [80],
 
   "search.exclude": {
     "**/node_modules": true,
@@ -20,7 +18,7 @@
     ".nyc_output": true,
     "coverage": true
   },
-  "files.watcherExclude":{
+  "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/node_modules/**": true,
 
@@ -33,6 +31,5 @@
   },
 
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "tslint.ignoreDefinitionFiles": false,
-  "editor.formatOnPaste": false
+  "tslint.ignoreDefinitionFiles": false
 }

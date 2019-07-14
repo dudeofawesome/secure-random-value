@@ -1,9 +1,9 @@
 // Suggested extensions
 {
-	"recommendations": [
-		"Compulim.indent4to2",
-		"EditorConfig.EditorConfig",
-		"eg2.tslint",
+  "recommendations": [
+    "EditorConfig.EditorConfig",
+    "dbaeumer.vscode-eslint",
     "jdforsythe.add-new-line-to-files",
-	]
+    "esbenp.prettier-vscode"
+  ]
 }
