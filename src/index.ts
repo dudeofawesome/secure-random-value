@@ -1,5 +1,20 @@
-import { randomBytes as RandomBytes } from 'crypto';
-import { endianness as Endianness } from 'os';
+import { randomBytes } from 'crypto';
+import { endianness } from 'os';
+import { CHAR_SETS, DEFAULT_STRING_CHARS } from './char-sets';
+
+const Uint32MAX = 65536;
+const LITTLE_ENDIAN: boolean = endianness() === 'LE';
+
+export function get_random_number(
+  buffer: Buffer,
+  position: number = 0,
+): number {
+  if (LITTLE_ENDIAN) {
+    return buffer.readUInt16LE(position) / Uint32MAX;
+  } else {
+    return buffer.readUInt16BE(position) / Uint32MAX;
+  }
+}
 
 export function RandomNumber(
   min: number = 0,
@@ -7,7 +22,7 @@ export function RandomNumber(
 ): Promise<number> {
   return new Promise<number>((resolve, reject) => {
     const difference = max - min;
-    RandomBytes(Math.ceil(difference / Uint32MAX) + 1, (err, buffer) => {
+    randomBytes(Math.ceil(difference / Uint32MAX) + 1, (err, buffer) => {
       if (err) {
         return reject(err);
       }
@@ -47,12 +62,12 @@ export function RandomString(
       charset = charsets;
     }
 
-    RandomBytes(length * 2, (err, buffer) => {
+    randomBytes(length * 2, (err, buffer) => {
       if (err) {
         return reject(err);
       }
 
-      let result: string = '';
+      let result = '';
 
       while (result.length < length) {
         const random_number: number = get_random_number(buffer, result.length);
@@ -66,79 +81,3 @@ export function RandomString(
     });
   });
 }
-
-const Uint32MAX = 65536;
-const LITTLE_ENDIAN: boolean = Endianness() === 'LE';
-export function get_random_number(
-  buffer: Buffer,
-  position: number = 0,
-): number {
-  if (LITTLE_ENDIAN) {
-    return buffer.readUInt16LE(position) / Uint32MAX;
-  } else {
-    return buffer.readUInt16BE(position) / Uint32MAX;
-  }
-}
-
-export type CHAR_SETS = 'alpha' | 'alpha_upper' | 'numeric' | 'emoji';
-
-const DEFAULT_STRING_CHARS: { [key: string]: string[] } = {
-  alpha: [
-    'a',
-    'b',
-    'c',
-    'd',
-    'e',
-    'f',
-    'g',
-    'h',
-    'i',
-    'j',
-    'k',
-    'l',
-    'm',
-    'n',
-    'o',
-    'p',
-    'q',
-    'r',
-    's',
-    't',
-    'u',
-    'v',
-    'w',
-    'x',
-    'y',
-    'z',
-  ],
-  alpha_upper: [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'I',
-    'J',
-    'K',
-    'L',
-    'M',
-    'N',
-    'O',
-    'P',
-    'Q',
-    'R',
-    'S',
-    'T',
-    'U',
-    'V',
-    'W',
-    'X',
-    'Y',
-    'Z',
-  ],
-  numeric: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-  emoji: ['😀', '👍', '🐱', '😎', '🔥'],
-};
